@@ -43,7 +43,7 @@ const pushList = () => {
         listArr.forEach((list) => {
           list.index = ctr;
           ctr += 1;
-        })
+        });
         pushList();
         pushToLocal();
       };
@@ -86,10 +86,10 @@ const pushList = () => {
 const clear = () => {
   listArr = listArr.filter((obj) => obj.completed !== true);
   let ctr = 1;
-        listArr.forEach((list) => {
-          list.index = ctr;
-          ctr += 1;
-        })
+  listArr.forEach((list) => {
+    list.index = ctr;
+    ctr += 1;
+  });
 };
 
 const showList = () => {
