@@ -36,11 +36,16 @@ const pushList = () => {
       const buttonId = listArr.findIndex((object) => object.index === dataSet);
       const deleted = (id) => {
         listArr.splice(id, 1);
-        for (let i = 0; i < listArr.length; i += 1) {
-          listArr[i].index = i + 1;
-        }
+        // for (let i = 0; i < listArr.length; i += 1) {
+        //   listArr[i].index = i + 1;
+        // }
+        let ctr = 1;
+        listArr.forEach((list) => {
+          list.index = ctr;
+          ctr += 1;
+        })
         pushList();
-        localStorage.setItem('listArr', JSON.stringify(listArr));
+        pushToLocal();
       };
       deleted(buttonId);
     });
@@ -54,7 +59,7 @@ const pushList = () => {
       listArr[toDoId].description = toDo.value;
       const update = () => {
         pushList();
-        localStorage.setItem('listArr', JSON.stringify(listArr));
+        pushToLocal();
       };
       update();
     });
@@ -80,6 +85,11 @@ const pushList = () => {
 
 const clear = () => {
   listArr = listArr.filter((obj) => obj.completed !== true);
+  let ctr = 1;
+        listArr.forEach((list) => {
+          list.index = ctr;
+          ctr += 1;
+        })
 };
 
 const showList = () => {
